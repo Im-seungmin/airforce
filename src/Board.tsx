@@ -28,6 +28,17 @@ const Board = () => {
   const [selected, setSelected] = useState<[number, number] | null>(null);
   const [turn, setTurn] = useState<"white" | "black">("white");
 
+  const onRedo = () => {
+    setBoard(backupBoard);
+    SWTurn();
+  };
+  const onRestart = () => {
+    setBoard(initialBoard);
+    setBackupBoard(initialBoard);
+    setSelected(null);
+    setTurn(`white`);
+  };
+
   const SWTurn = () => {
     setTurn(turn === "white" ? "black" : "white");
   };
@@ -85,13 +96,10 @@ const Board = () => {
           })}
         </div>
       ))}
-      <button
-        onClick={() => {
-          setBoard(backupBoard);
-        }}
-      >
-        Redo
-      </button>
+      <div className="buttonGrp">
+        <button onClick={onRedo}>Redo</button>
+        <button onClick={onRestart}>Restart</button>
+      </div>
     </div>
   );
 };

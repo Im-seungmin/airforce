@@ -13,7 +13,7 @@
   border: 4px solid #000;
 }
 
-.board > button {
+.buttonGrp {
   position: absolute;
 
   bottom: -30px;
